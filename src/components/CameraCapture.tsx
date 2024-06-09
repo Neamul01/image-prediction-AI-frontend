@@ -73,7 +73,21 @@ const CameraCapture: React.FC = () => {
   //   };
 
   return (
-    <div className="">
+    <div className="mt-20 px-2">
+      <div className="flex flex-col gap-2 items-center">
+        <h2 className="text-center text-xl text-blue-500 font-medium">
+          Image prediction AI
+        </h2>
+        <p>
+          1. Please click to Start camera to start the camera and{" "}
+          <span className="font-semibold">give permission</span>{" "}
+        </p>
+        <p>
+          2. When your camera is set click{" "}
+          <span className="font-semibold">capture image</span> to predict the
+          captured image and result will show below.{" "}
+        </p>
+      </div>
       <div className="flex items-center flex-col gap-2">
         <video ref={videoRef} autoPlay width="640" height="480"></video>
         <div className="flex gap-3">
@@ -100,10 +114,10 @@ const CameraCapture: React.FC = () => {
       <div className="max-w-[600px] mx-auto ">
         {analyzeData && !isLoading ? (
           <div className="flex flex-col items-start">
-            <p>
+            {/* <p>
               <span className="font-semibold text-xl">Area: </span>
               <span className="capitalize">{analyzeData.area}</span>
-            </p>
+            </p> */}
             <p>
               <span className="font-semibold text-xl">Tracked Object: </span>
               <span className="capitalize">
