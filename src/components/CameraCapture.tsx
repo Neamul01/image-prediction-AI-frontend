@@ -114,10 +114,10 @@ const CameraCapture: React.FC = () => {
       <div className="max-w-[600px] mx-auto ">
         {analyzeData && !isLoading ? (
           <div className="flex flex-col items-start">
-            {/* <p>
+            <p>
               <span className="font-semibold text-xl">Area: </span>
               <span className="capitalize">{analyzeData.area}</span>
-            </p> */}
+            </p>
             <p>
               <span className="font-semibold text-xl">Tracked Object: </span>
               <span className="capitalize">
