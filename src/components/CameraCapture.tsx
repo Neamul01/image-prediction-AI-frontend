@@ -40,6 +40,8 @@ const CameraCapture: React.FC = () => {
             setIsLoading(false);
           } catch (error) {
             console.error("Error:", error);
+          } finally {
+            setIsLoading(false);
           }
         }
       }, "image/png");
@@ -109,7 +111,7 @@ const CameraCapture: React.FC = () => {
               </span>
             </p>
           </div>
-        ) : (
+        ) : !analyzeData && !isLoading ? null : (
           <p>Loading...</p>
         )}
       </div>
