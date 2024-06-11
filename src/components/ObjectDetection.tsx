@@ -1,11 +1,11 @@
-// App.tsx
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as cocoSsd from "@tensorflow-models/coco-ssd";
 import "@tensorflow/tfjs";
 
 const App = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [detections, setDetections] = useState<cocoSsd.DetectedObject[]>([]);
 
   useEffect(() => {
     const loadModelAndDetect = async () => {
@@ -39,6 +39,8 @@ const App = () => {
     ) => {
       model.detect(video).then((predictions) => {
         renderPredictions(predictions);
+        setDetections(predictions); // Save detections to state
+        console.log(predictions); // Console the results
         requestAnimationFrame(() => {
           detectFrame(video, model);
         });
@@ -74,6 +76,16 @@ const App = () => {
     loadModelAndDetect();
   }, []);
 
+  const handleSubmit = async () => {
+    try {
+      //   const response = await axios.post('https://your-backend-api.com/endpoint', { detections });
+      console.log("API Response:", detections);
+    } catch (error) {
+      console.error("Error making API call:", error);
+    }
+  };
+  //
+
   return (
     <div>
       <h1>Object Detection App</h1>
@@ -90,6 +102,7 @@ const App = () => {
         height="480"
         style={{ border: "1px solid black" }}
       />
+      <button onClick={handleSubmit}>Submit</button>
     </div>
   );
 };
