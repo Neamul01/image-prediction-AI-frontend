@@ -1,11 +1,17 @@
+// import CameraCapture from "./components/CameraCapture";
+import ObjectDetection from "./components/ObjectDetection";
 import "./App.css";
-import CameraCapture from "./components/CameraCapture";
 
 function App() {
   return (
-    <div className="max-w-5xl mx-auto">
-      <CameraCapture />
+    // <div className="max-w-5xl mx-auto">
+    <div className="App">
+      <header className="App-header">
+        <h1>Object Detection App</h1>
+      </header>
+      <ObjectDetection />
     </div>
+    // </div>
   );
 }
 
